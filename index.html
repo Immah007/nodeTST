@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Node.js HTML Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Sender</title>
 </head>
 <body>
-  <h1>Hello from HTML!</h1>
-  <input type="text" id="inputText">
-  <button onclick="sendText()">Send Text</button>
-  <p id="response"></p>
-  <script>
-    async function sendText() {
-      const inputText = document.getElementById('inputText').value;
-      const response = await fetch(`/sendText?text=${inputText}`);
-      const data = await response.text();
-      document.getElementById('response').innerText = data;
-    }
-  </script>
+    <input type="text" id="textInput">
+    <button onclick="sendText()">Send</button>
+
+    <script>
+        function sendText() {
+            const textInput = document.getElementById('textInput').value;
+            fetch('/sendText', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: textInput })
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>
+
