@@ -20,7 +20,8 @@
                 body: JSON.stringify({ text: textInput })
             })
             .then(response => response.text())
-            .then(data => alert(data))
+           // .then(data => alert(data))
+                .then(document.getElementById('textInput').value = " ";
             .catch(error => console.error('Error:', error));
         }
     </script>
