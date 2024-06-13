@@ -1,12 +1,14 @@
 {
-  "name": "node-html-app",
+  "name": "text-sender",
   "version": "1.0.0",
-  "description": "A simple Node.js application serving HTML file",
-  "main": "index.js",
+  "description": "A simple text sending application",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0"
   }
 }
+
