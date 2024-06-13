@@ -1,20 +1,17 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
-const path = require('path');
+const port = process.env.PORT || 3000;
 
-const PORT = process.env.PORT || 3000;
+app.use(bodyParser.json());
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Route to handle sending text
-app.get('/sendText', (req, res) => {
-  const text = req.query.text;
-  console.log('Received text:', text);
-  res.send('Server Working');
+app.post('/sendText', (req, res) => {
+    const receivedText = req.body.text;
+    console.log('Text received:', receivedText);
+    res.send('Text received');
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
